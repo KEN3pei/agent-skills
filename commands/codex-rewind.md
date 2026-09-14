@@ -15,10 +15,10 @@ description: Codex のローカルセッションを指定 turn より前の状�
 
 ## Claude への指示
 
-`/Users/uenokensuke/Apps/cc-skills/codex-rewind/SKILL.md` を読み、以下のGo moduleを使う。
+このリポジトリ内の `codex-rewind/SKILL.md` を読み、以下のGo moduleを使う。
 
 ```bash
-cd /Users/uenokensuke/Apps/cc-skills/codex-rewind/scripts/codex-rewind
+cd codex-rewind/scripts/codex-rewind
 go run . list-turns --session-id <session_id>
 go run . clone-before-turn --session-id <session_id> --before-turn <turn_id>
 go run . clone-through-turn --session-id <session_id> --through-turn <turn_id>

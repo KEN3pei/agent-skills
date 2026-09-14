@@ -1,4 +1,4 @@
-module github.com/uenokensuke/cc-skills/codex-rewind
+module codex-rewind
 
 go 1.23.0
 

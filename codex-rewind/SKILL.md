@@ -17,21 +17,21 @@ This workflow creates a new session. It does not modify the current in-memory co
 2. List turns when the boundary is unclear:
 
 ```bash
-cd /Users/uenokensuke/Apps/cc-skills/codex-rewind/scripts/codex-rewind
+cd codex-rewind/scripts/codex-rewind
 go run . list-turns --session-id <session_id>
 ```
 
 3. Create the clone:
 
 ```bash
-cd /Users/uenokensuke/Apps/cc-skills/codex-rewind/scripts/codex-rewind
+cd codex-rewind/scripts/codex-rewind
 go run . clone-before-turn --session-id <session_id> --before-turn <turn_id>
 ```
 
 or:
 
 ```bash
-cd /Users/uenokensuke/Apps/cc-skills/codex-rewind/scripts/codex-rewind
+cd codex-rewind/scripts/codex-rewind
 go run . clone-through-turn --session-id <session_id> --through-turn <turn_id>
 ```
 
