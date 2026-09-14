@@ -32,3 +32,8 @@ Claude Code and Codex 向けの reusable skills / slash commands を管理する
 
 - Codex / Herdr / Treehouse 向け。Herdr の別 pane に作業を依頼するとき、Treehouse-managed Git worktree 上で agent を起動する。
 - 作業完了後の review / commit / push / cleanup は通常の Herdr / agent 運用に委ねる。
+
+### /codex-rewind
+
+- Codex のローカルセッションを指定 turn より前または指定 turn までの状態に clean clone する。
+- 元セッションは削除せず、新しい session id と別 terminal で実行する `codex resume <new_session_id>` を表示する。
