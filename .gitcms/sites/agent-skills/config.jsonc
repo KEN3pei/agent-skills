@@ -1,0 +1,213 @@
+{
+  "version": "1.2",
+  "media": {
+    "default_library": "repo_media",
+    "libraries": [
+      {
+        "key": "repo_media",
+        "label": "Repository media",
+        "references": {
+          "write": {
+            "mode": "root_relative",
+            "base_path": "/"
+          },
+          "allow_default_library_fallback": true
+        },
+        "limits": {
+          "max_file_size_mb": 10
+        },
+        "driver": "git",
+        "storage": {
+          "root_path": "public"
+        }
+      }
+    ]
+  },
+  "ssg_framework": "other",
+  "frontmatter_format": "yaml",
+  "publishing_mode": "editorial_workflow",
+  "collections": [
+    {
+      "name": "commands",
+      "git_path": "/commands/",
+      "file_extension": ".md",
+      "filename_pattern": "",
+      "label": "Commands",
+      "collection_type": "flat",
+      "frontmatter_schema": []
+    },
+    {
+      "name": "db-reviewer",
+      "git_path": "/db-reviewer/",
+      "file_extension": ".md",
+      "filename_pattern": "",
+      "label": "Db reviewer",
+      "collection_type": "grouped",
+      "frontmatter_schema": [
+        {
+          "name": "name",
+          "type": "title",
+          "label": "Name",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "richtext",
+          "label": "Description",
+          "required": false
+        },
+        {
+          "name": "allowed-tools",
+          "type": "text",
+          "label": "Allowed tools",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "codex-rewind",
+      "git_path": "/codex-rewind/",
+      "file_extension": ".md",
+      "filename_pattern": "",
+      "label": "Codex rewind",
+      "collection_type": "flat",
+      "frontmatter_schema": [
+        {
+          "name": "name",
+          "type": "title",
+          "label": "Name",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "richtext",
+          "label": "Description",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "coupling-balance-review",
+      "git_path": "/design-reviewer/coupling-balance-review/",
+      "file_extension": ".md",
+      "filename_pattern": "",
+      "label": "Coupling balance review",
+      "collection_type": "flat",
+      "frontmatter_schema": [
+        {
+          "name": "name",
+          "type": "title",
+          "label": "Name",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "richtext",
+          "label": "Description",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "herdr-treehouse-pane",
+      "git_path": "/herdr-treehouse-pane/",
+      "file_extension": ".md",
+      "filename_pattern": "",
+      "label": "Herdr treehouse pane",
+      "collection_type": "flat",
+      "frontmatter_schema": [
+        {
+          "name": "name",
+          "type": "title",
+          "label": "Name",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "richtext",
+          "label": "Description",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "nippou-add",
+      "git_path": "/nippou-add/",
+      "file_extension": ".md",
+      "filename_pattern": "",
+      "label": "Nippou add",
+      "collection_type": "flat",
+      "frontmatter_schema": [
+        {
+          "name": "name",
+          "type": "title",
+          "label": "Name",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "richtext",
+          "label": "Description",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "prompt-token-reviewer",
+      "git_path": "/prompt-token-reviewer/",
+      "file_extension": ".md",
+      "filename_pattern": "",
+      "label": "Prompt token reviewer",
+      "collection_type": "flat",
+      "frontmatter_schema": [
+        {
+          "name": "name",
+          "type": "title",
+          "label": "Name",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "richtext",
+          "label": "Description",
+          "required": false
+        },
+        {
+          "name": "allowed-tools",
+          "type": "text",
+          "label": "Allowed tools",
+          "required": false
+        },
+        {
+          "name": "disable-model-invocation",
+          "type": "boolean",
+          "label": "Disable model invocation",
+          "required": false,
+          "default": true
+        }
+      ]
+    },
+    {
+      "name": "research-design-review",
+      "git_path": "/research-reviewer/research-design-review/",
+      "file_extension": ".md",
+      "filename_pattern": "",
+      "label": "Research design review",
+      "collection_type": "flat",
+      "frontmatter_schema": [
+        {
+          "name": "name",
+          "type": "title",
+          "label": "Name",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "richtext",
+          "label": "Description",
+          "required": false
+        }
+      ]
+    }
+  ]
+}
