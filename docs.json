@@ -12,7 +12,26 @@
     "groups": [
       {
         "group": "Overview",
-        "pages": ["index"]
+        "pages": [
+          "index",
+          {
+            "group": "commands",
+            "pages": [
+              "commands/analyze-bookmarks",
+              "commands/android-tabs",
+              "commands/codex-rewind",
+              "commands/daily-plan",
+              "commands/herdr-treehouse-pane",
+              "commands/nippou-add"
+            ]
+          },
+          {
+            "group": "codex-rewind",
+            "pages": [
+              "codex-rewind/SKILL"
+            ]
+          }
+        ]
       }
     ]
   }
