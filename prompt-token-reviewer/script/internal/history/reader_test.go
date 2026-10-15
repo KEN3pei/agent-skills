@@ -21,6 +21,17 @@ func writeHistoryFile(t *testing.T, lines []string) string {
 	return path
 }
 
+func writeJSONLFile(t *testing.T, name string, lines []string) string {
+	t.Helper()
+	dir := t.TempDir()
+	path := filepath.Join(dir, name)
+	content := strings.Join(lines, "\n")
+	if err := os.WriteFile(path, []byte(content), 0o644); err != nil {
+		t.Fatalf("writeJSONLFile: %v", err)
+	}
+	return path
+}
+
 // TestReadPrompts_ParsesDisplayField は display フィールドが正しくパースされることを確認する。
 func TestReadPrompts_ParsesDisplayField(t *testing.T) {
 	// Given: display が15文字以上のエントリ1件
@@ -247,5 +258,61 @@ func TestReadPrompts_FourteenCharsFiltered(t *testing.T) {
 	// Then
 	if err == nil {
 		t.Fatal("expected error for 14-char display with no pasted, got nil")
+	}
+}
+
+func TestReadCodexPromptsFromFile_ParsesResponseItemUserMessage(t *testing.T) {
+	line := `{"type":"response_item","payload":{"type":"message","role":"user","content":[{"type":"input_text","text":"これはCodexの十分に長いテストプロンプトです"}]}}`
+	path := writeJSONLFile(t, "session.jsonl", []string{line})
+
+	prompts, err := history.ReadCodexPromptsFromFile(path)
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if len(prompts) != 1 {
+		t.Fatalf("expected 1 prompt, got %d", len(prompts))
+	}
+	if !strings.Contains(prompts[0].FullText, "Codex") {
+		t.Errorf("expected Codex prompt text, got %q", prompts[0].FullText)
+	}
+}
+
+func TestReadCodexPromptsFromFile_ParsesEventUserMessage(t *testing.T) {
+	line := `{"type":"event_msg","payload":{"item":{"type":"UserMessage","content":[{"type":"text","text":"これはCodex eventの十分に長いプロンプトです"}]}}}`
+	path := writeJSONLFile(t, "session.jsonl", []string{line})
+
+	prompts, err := history.ReadCodexPromptsFromFile(path)
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if len(prompts) != 1 {
+		t.Fatalf("expected 1 prompt, got %d", len(prompts))
+	}
+	if !strings.Contains(prompts[0].FullText, "event") {
+		t.Errorf("expected event prompt text, got %q", prompts[0].FullText)
+	}
+}
+
+func TestReadRandomPrompts_ReadsCodexSessionsWhenClaudeHistoryMissing(t *testing.T) {
+	home := t.TempDir()
+	sessionDir := filepath.Join(home, ".codex", "sessions", "2026", "09", "11")
+	if err := os.MkdirAll(sessionDir, 0o755); err != nil {
+		t.Fatalf("mkdir codex sessions: %v", err)
+	}
+	line := `{"type":"response_item","payload":{"type":"message","role":"user","content":[{"type":"input_text","text":"これはCodex sessionsだけにある長いプロンプトです"}]}}`
+	if err := os.WriteFile(filepath.Join(sessionDir, "session.jsonl"), []byte(line), 0o644); err != nil {
+		t.Fatalf("write codex session: %v", err)
+	}
+
+	t.Setenv("HOME", home)
+	prompts, err := history.ReadRandomPrompts(10)
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if len(prompts) != 1 {
+		t.Fatalf("expected 1 prompt, got %d", len(prompts))
+	}
+	if !strings.Contains(prompts[0].FullText, "Codex sessions") {
+		t.Errorf("expected Codex sessions prompt, got %q", prompts[0].FullText)
 	}
 }

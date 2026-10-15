@@ -1,0 +1,23 @@
+---
+title: "agent-skills"
+description: "Claude Code と Codex 向けの再利用可能な skills と commands"
+---
+
+`agent-skills` は、Claude Code と Codex 向けの再利用可能な skills と commands を管理するリポジトリです。
+
+## Runtime notes
+
+- `commands/*.md` は Claude Code の custom slash commands として使用します。
+- `agents/openai.yaml` は Codex の skill UI metadata として使用します。
+- `allowed-tools` などの frontmatter は Claude Code 向け metadata として保持します。
+- 特定の runtime 専用の skill は、各 `SKILL.md` またはリポジトリの README に記載します。
+
+## Available skills
+
+- `prompt-token-reviewer`: 過去のプロンプトを抽出し、トークン効率の観点からレビューします。
+- `coupling-balance-review`: ソフトウェア設計を結合のバランスという観点でレビューします。
+- `research-design-review`: 調査開始前に、意思決定や仮説、検証方法などを整理します。
+- `herdr-treehouse-pane`: Herdr の別 pane で、Treehouse-managed Git worktree 上の agent を起動します。
+- `codex-rewind`: Codex のローカルセッションを指定した turn の状態から複製します。
+
+詳しいインストール方法と使用方法は、リポジトリの `README.md` および各 skill の `SKILL.md` を参照してください。

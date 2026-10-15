@@ -13,12 +13,16 @@ description: Obsidian daily note の ### Nippo 欄に引数を箇条書きで追
 
 引数として渡された内容: `$ARGUMENTS`
 
-## Claude への指示
+## エージェントへの指示
 
 `$ARGUMENTS` をそのまま 1 件の Nippo として扱い、以下を実行する。
 
 ```bash
-/Users/uenokensuke/Apps/cc-skills/nippou-add/bin/nippou-add "$ARGUMENTS"
+if [ -x "$HOME/.codex/skills/nippou-add/bin/nippou-add" ]; then
+  "$HOME/.codex/skills/nippou-add/bin/nippou-add" "$ARGUMENTS"
+else
+  "$HOME/.claude/skills/nippou-add/bin/nippou-add" "$ARGUMENTS"
+fi
 ```
 
 実行後、更新した daily note のパスと追記した箇条書きを日本語で簡潔に返す。

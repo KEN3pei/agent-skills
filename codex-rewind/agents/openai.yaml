@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Rewind"
+  short_description: "Create a rewound clean clone of a local Codex session."
+  default_prompt: "Use $codex-rewind to create a clean clone of a local Codex session and print the codex resume command."

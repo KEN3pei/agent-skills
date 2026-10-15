@@ -1,0 +1,4 @@
+interface:
+  display_name: "Herdr Treehouse Pane"
+  short_description: "Delegate Herdr pane work inside Treehouse."
+  default_prompt: "Use $herdr-treehouse-pane to delegate this task to another Herdr pane inside a Treehouse worktree."

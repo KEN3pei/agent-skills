@@ -31,7 +31,7 @@ func setupHome(t *testing.T, lines []string) string {
 func runMain(t *testing.T, home string) (stdout, stderr string, exitCode int) {
 	t.Helper()
 	cmd := exec.Command("go", "run", ".")
-	cmd.Dir = filepath.Join(os.Getenv("HOME"), "Apps/prompt-reviewer")
+	cmd.Dir = "."
 
 	// ANTHROPIC_API_KEY を除外した環境変数を構築する
 	var env []string
@@ -133,7 +133,7 @@ func TestMain_SucceedsWithoutAPIKey(t *testing.T) {
 	}
 }
 
-// TestMain_ExitsOneOnMissingHistoryFile は history.jsonl が存在しない場合に
+// TestMain_ExitsOneOnMissingHistoryFile はローカル履歴が存在しない場合に
 // exit 1 かつ stderr にエラーメッセージが出力されることを確認する。
 func TestMain_ExitsOneOnMissingHistoryFile(t *testing.T) {
 	// Given: history.jsonl が存在しない HOME

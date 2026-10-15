@@ -1,18 +1,23 @@
 ---
 name: prompt-token-reviewer
-description: This skill should be used when the user invokes "/prompt-token-reviewer", asks to "review my prompts", "check prompt token efficiency", "analyze my Claude Code prompt history", or wants to improve their prompting efficiency.
+description: Review prompt token efficiency from local Claude Code and Codex prompt history. Use when the user invokes "/prompt-token-reviewer", asks to review prompt history, or wants to improve prompting efficiency.
 allowed-tools: Bash
 disable-model-invocation: true
 ---
 
-以下の手順でプロンプトのトークン効率レビューを実施してください。
+Claude Code と Codex のローカル会話履歴を対象に、以下の手順でプロンプトのトークン効率レビューを実施してください。
 
 ## 手順
 
-1. 次のコマンドを実行して、~/.claude/ の会話履歴からランダムに抽出したユーザープロンプト一覧を取得する：
+1. 次のコマンドを実行して、`~/.claude/history.jsonl` と `~/.codex/sessions/` からランダムに抽出したユーザープロンプト一覧を取得する：
 
 ```bash
-cd ~/.claude/skills/prompt-token-reviewer/script && go run .
+if [ -d "$HOME/.codex/skills/prompt-token-reviewer/script" ]; then
+  cd "$HOME/.codex/skills/prompt-token-reviewer/script"
+else
+  cd "$HOME/.claude/skills/prompt-token-reviewer/script"
+fi
+go run .
 ```
 
 2. 出力された番号付きプロンプト（`N. <プロンプト全文>` 形式）を受け取り、各プロンプトのトークン効率を日本語でレビューする。

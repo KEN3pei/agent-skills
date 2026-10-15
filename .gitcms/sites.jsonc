@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "sites": [
+    {
+      "key": "agent-skills",
+      "display_name": "agent-skills.com",
+      "website_url": "https://agent-skills.com",
+      "root_path": ""
+    }
+  ]
+}

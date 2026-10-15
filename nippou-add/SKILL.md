@@ -18,10 +18,14 @@ Default vault:
 ## Workflow
 
 1. Treat the text after `@nippou-add` as the entry content. Preserve the user's wording.
-2. Run the bundled script:
+2. Run the bundled script from the active skill installation:
 
    ```bash
-   /Users/uenokensuke/Apps/cc-skills/nippou-add/bin/nippou-add '<entry text>'
+   if [ -x "$HOME/.codex/skills/nippou-add/bin/nippou-add" ]; then
+     "$HOME/.codex/skills/nippou-add/bin/nippou-add" '<entry text>'
+   else
+     "$HOME/.claude/skills/nippou-add/bin/nippou-add" '<entry text>'
+   fi
    ```
 
 3. Report the updated daily note path and the bullet that was appended.
@@ -41,7 +45,7 @@ Default vault:
 Use options only when needed for testing or non-default vaults:
 
 ```bash
-/Users/uenokensuke/Apps/cc-skills/nippou-add/bin/nippou-add --date 2026-09-03 --vault '/path/to/vault' 'entry text'
+"$HOME/.codex/skills/nippou-add/bin/nippou-add" --date 2026-09-03 --vault '/path/to/vault' 'entry text'
 ```
 
 The binary prints the updated file path and appended bullet.
@@ -49,5 +53,5 @@ The binary prints the updated file path and appended bullet.
 If the binary is missing after moving this skill to another machine, rebuild it from source:
 
 ```bash
-go build -o /Users/uenokensuke/Apps/cc-skills/nippou-add/bin/nippou-add /Users/uenokensuke/Apps/cc-skills/nippou-add/scripts/nippou_add.go
+go build -o "$HOME/.codex/skills/nippou-add/bin/nippou-add" "$HOME/.codex/skills/nippou-add/scripts/nippou_add.go"
 ```
