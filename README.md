@@ -37,3 +37,8 @@ Claude Code and Codex 向けの reusable skills / slash commands を管理する
 
 - Codex のローカルセッションを指定 turn より前または指定 turn までの状態に clean clone する。
 - 元セッションは削除せず、新しい session id と別 terminal で実行する `codex resume <new_session_id>` を表示する。
+
+### herdr/
+
+- Herdr まわりで作った仕組みを、1つにつき1ディレクトリでまとめる。詳細は [herdr/README.md](./herdr/README.md)
+- `tab-title`: 会話内容から10文字以内のタイトルを作り、herdr のタブ名に自動設定する Stop フック
