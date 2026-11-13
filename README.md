@@ -38,6 +38,19 @@ Claude Code and Codex 向けの reusable skills / slash commands を管理する
 - Codex のローカルセッションを指定 turn より前または指定 turn までの状態に clean clone する。
 - 元セッションは削除せず、新しい session id と別 terminal で実行する `codex resume <new_session_id>` を表示する。
 
+### /my-tasks
+
+- 複数の GitHub Project から、自分がアサインされたアイテムを1つの表で一覧し、ステータスを変更する。
+- チケット化する前の下書きをローカルに置き、一覧の下に表示する。
+- 対象のプロジェクトは `~/.config/my-tasks/config.json` に書く。書き方は [my-tasks/config.example.json](./my-tasks/config.example.json) を参照。`gh` CLI（`project` スコープ）が必要。
+
+### /herdr-tree, /herdr-session-push, /herdr-session-pull
+
+- Herdr 専用。
+- `/herdr-tree`: Herdr のワークスペース・タブ・ペインをツリー表示する（読み取りのみ）。ペインは `myapp:p0` の形で出るので、そのまま下の2つの宛先に使える。
+- `/herdr-session-push <workspace:pane> [指示]`: 別ペインのエージェントに、文脈を補った指示を返事を待たずに送る。送ってよい状態か（普通のシェルではないか、承認待ちで止まっていないか）を判定してから送る。
+- `/herdr-session-pull <workspace:pane> [知りたいこと]`: 別ペインの画面を読み、進み具合や結果を要約する。相手には何も送らない。
+
 ### herdr/
 
 - Herdr まわりで作った仕組みを、1つにつき1ディレクトリでまとめる。詳細は [herdr/README.md](./herdr/README.md)

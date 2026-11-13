@@ -1,0 +1,17 @@
+{
+  "projects": [
+    {
+      "key": "A",
+      "owner": "your-org",
+      "number": 1,
+      "done": ["Done"]
+    },
+    {
+      "key": "B",
+      "owner": "your-org",
+      "number": 2,
+      "done": ["Closed"],
+      "include": ["Sprint Backlog", "In Progress", "Review"]
+    }
+  ]
+}
