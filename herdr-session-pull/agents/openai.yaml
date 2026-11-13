@@ -1,0 +1,4 @@
+interface:
+  display_name: "Herdr Session Pull"
+  short_description: "Read another Herdr pane and summarize its progress."
+  default_prompt: "Use $herdr-session-pull to check what another Herdr pane is doing."

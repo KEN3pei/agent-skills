@@ -1,0 +1,4 @@
+interface:
+  display_name: "Herdr Tree"
+  short_description: "Show Herdr workspaces, tabs, and panes as a tree."
+  default_prompt: "Use $herdr-tree to show the current Herdr layout."

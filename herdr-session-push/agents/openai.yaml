@@ -1,0 +1,4 @@
+interface:
+  display_name: "Herdr Session Push"
+  short_description: "Send an organized prompt to another Herdr agent pane."
+  default_prompt: "Use $herdr-session-push to send this request to another Herdr pane."
